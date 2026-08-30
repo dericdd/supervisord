@@ -1,0 +1,15 @@
+
+services:
+  supervisord:
+    image: ${DOCKER_REGISTRY:-ghcr.io/dericdd}/supervisord:${SUPERVISORD_IMAGE_VERSION:-v20260829}
+    container_name: ${SUPERVISORD_HOSTNAME:-supervisord}
+    hostname: ${SUPERVISORD_HOSTNAME:-supervisord}
+    restart: ${SUPERVISORD_RESTART_MODE:-unless-stopped}
+    network_mode: ${SUPERVISORD_NETWORK_MODE:-host}
+    build:
+      dockerfile: Dockerfile
+      args:
+        - BASE_IMAGE
+        - REPO_URL
+    env_file:
+      - path: ./.env
