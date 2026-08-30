@@ -36,7 +36,7 @@ RUN \
   chmod 755 /healthcheck.sh && \
   chmod 775 /healthcheck.d
 
-# >> Copy SupervisorD and SSHD's HealthCheck:
+# >> Copy SupervisorD HealthCheck:
 COPY --chmod=755 assets/healthcheck-supervisord.sh /healthcheck.d/01-supervisord.sh
 
 # >> Remove NoLogin Flag:
